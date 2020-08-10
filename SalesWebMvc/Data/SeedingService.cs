@@ -27,7 +27,7 @@ namespace SalesWebMvc.Data
             Department d1 = new Department(1, "Computers");
             Department d2 = new Department(2, "Electronics");
 
-            Seller s1 = new Seller(1, "Juan", "juan@gmail.com", new DateTime(1998, 4, 21), 1000.0, d1);
+            Seller s1 = new Seller(1, "juan@gmail.com", "Juan", new DateTime(1998, 4, 21), 1000.0, d1);
 
             SalesRecord sr1 = new SalesRecord(1, new DateTime(2018, 09, 25), 11000.0, SaleStatus.Billed, s1);
 
