@@ -11,6 +11,7 @@ namespace SalesWebMvc.Models
         public int Id { get; set; }
         [DataType(DataType.EmailAddress)]
         public string Email { get; set; }
+        [Required]
         public string Name { get; set; }
         
         [Display(Name="Birth Date")]
