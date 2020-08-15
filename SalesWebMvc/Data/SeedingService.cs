@@ -1,4 +1,5 @@
-﻿using SalesWebMvc.Models;
+﻿using Microsoft.EntityFrameworkCore;
+using SalesWebMvc.Models;
 using SalesWebMvc.Models.Enums;
 using SalesWebMvc.Models.ViewModels;
 using System;
@@ -17,9 +18,13 @@ namespace SalesWebMvc.Data
             _context = context;
         }
 
-        public void Seed()
+        public async void Seed()
         {
-            if (_context.Department.Any() || _context.Seller.Any() || _context.SalesRecord.Any())
+            bool hasAnyDeparment = await _context.Department.AnyAsync();
+            bool hasAnySeller = await _context.Seller.AnyAsync();
+            bool hasAnySalesRecord = await _context.SalesRecord.AnyAsync();
+
+            if (hasAnyDeparment || hasAnySeller || hasAnySalesRecord)
             {
                 return;
             }
@@ -35,7 +40,7 @@ namespace SalesWebMvc.Data
             _context.Seller.Add(s1);
             _context.SalesRecord.Add(sr1);
 
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
         }
     }
 }
